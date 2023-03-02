@@ -5,6 +5,7 @@ import styles from "./style";
 import CameraIcon from "../../Icons/CameraIcon";
 import IGTVIcon from "../../Icons/IGTVIcon";
 import InstagramLogo from "../../Icons/InstagramLogo";
+import DirectIcon from "../../Icons/DirectIcon";
 
 const Header = () => {
   return (
@@ -15,9 +16,14 @@ const Header = () => {
       <TouchableOpacity>
         <InstagramLogo height={25} />
       </TouchableOpacity>
-      <TouchableOpacity>
-        <IGTVIcon />
-      </TouchableOpacity>
+      <View style={styles.rightCol}>
+        <TouchableOpacity style={styles.rightColItem}>
+          <IGTVIcon />
+        </TouchableOpacity>
+        <TouchableOpacity>
+          <DirectIcon />
+        </TouchableOpacity>
+      </View>
     </View>
   );
 };

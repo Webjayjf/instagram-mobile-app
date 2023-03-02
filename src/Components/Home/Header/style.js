@@ -8,6 +8,13 @@ const styles = StyleSheet.create({
     borderBottomWidth: 1,
     borderBottomColor: "#ddd",
   },
+  rightCol: {
+    flexDirection: "row",
+    alignItems: "center",
+  },
+  rightColItem: {
+    marginRight: 10,
+  },
 });
 
 export default styles;
