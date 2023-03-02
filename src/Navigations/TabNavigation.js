@@ -22,6 +22,7 @@ const TabNavigation = () => {
         headerShown: false,
         tabBarStyle: { backgroundColor: colors.background },
         tabBarShowLabel: false,
+        tabBarActiveTintColor: "black",
       }}
     >
       <Tab.Screen
@@ -51,7 +52,9 @@ const TabNavigation = () => {
         name="Likes"
         component={Likes}
         options={{
-          tabBarIcon: ({ focused, color, size }) => <LikesIcon color={color} />,
+          tabBarIcon: ({ focused, color, size }) => (
+            <LikesIcon color={color} focused={focused} />
+          ),
         }}
       />
       <Tab.Screen
