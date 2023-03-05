@@ -7,8 +7,10 @@ import styles from "./style";
 import GalleryIcon from "../../Icons/GalleryIcon";
 import LikesIcon from "../../Icons/LikesIcon";
 import DirectIcon from "../../Icons/DirectIcon";
+import { useNavigation } from "@react-navigation/native";
 
 const Body = () => {
+  const navigation = useNavigation();
   const data = [
     1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21,
   ];
@@ -22,6 +24,7 @@ const Body = () => {
         renderItem={({ item }) => (
           <TouchableOpacity
             style={styles.item}
+            onPress={() => navigation.navigate("PostDetails")}
             onLongPress={() => setIsLongPress(true)}
             onPressOut={() => setIsLongPress(false)}
           >

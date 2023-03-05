@@ -7,11 +7,11 @@ import Home from "../Screens/Home";
 import Add from "../Screens/Add";
 import Profile from "../Screens/Profile";
 import Likes from "../Screens/Likes";
-import Explore from "../Screens/Explore";
 import HomeIcon from "../Components/Icons/HomeIcon";
 import AddIcon from "../Components/Icons/AddIcon";
 import ExploreIcon from "../Components/Icons/ExploreIcon";
 import LikesIcon from "../Components/Icons/LikesIcon";
+import ExploreStack from "./ExploreStack";
 
 const Tab = createBottomTabNavigator();
 
@@ -33,8 +33,8 @@ const TabNavigation = () => {
         }}
       />
       <Tab.Screen
-        name="Explore"
-        component={Explore}
+        name="ExploreStack"
+        component={ExploreStack}
         options={{
           tabBarIcon: ({ focused, color, size }) => (
             <ExploreIcon color={color} />
