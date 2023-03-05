@@ -10,7 +10,7 @@ export default StyleSheet.create({
     flex: 1,
     flexDirection: "row",
     alignItems: "center",
-    backgroundColor: colors.graylight,
+    backgroundColor: colors.searchBarBackground,
     borderRadius: 20,
     padding: 5,
   },

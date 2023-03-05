@@ -3,4 +3,5 @@ export const colors = {
   primary: "#3797EF",
   graylight: "#FAFAFA",
   borderColor: "#f4f4f4",
+  searchBarBackground: "#EAEAEB",
 };
