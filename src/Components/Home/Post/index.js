@@ -9,7 +9,7 @@ import ShareIcon from "../../Icons/ShareIcon";
 import SaveIcon from "../../Icons/SaveIcon";
 import ImageSlider from "./ImageSlider";
 
-const Post = () => {
+const Post = ({ post }) => {
   const [liked, setLiked] = useState(false);
   return (
     <View style={styles.container}>
@@ -17,12 +17,12 @@ const Post = () => {
         <Image
           style={styles.userImage}
           source={{
-            uri: "https://images.unsplash.com/photo-1520342868574-5fa3804e551c?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=6ff92caffcdd63681a35134a6770ed3b&auto=format&fit=crop&w=1951&q=80",
+            uri: post.userImage,
           }}
         />
         <View style={styles.usernameCol}>
           <TouchableOpacity>
-            <Text style={styles.username}>james</Text>
+            <Text style={styles.username}>{post.username}</Text>
           </TouchableOpacity>
           <TouchableOpacity>
             <Text style={styles.location}>Sivas</Text>
@@ -33,7 +33,7 @@ const Post = () => {
         </TouchableOpacity>
       </View>
       <View style={styles.body}>
-        <ImageSlider />
+        <ImageSlider images={post.images} />
       </View>
       <View style={styles.footer}>
         <View style={styles.footerRow}>
@@ -55,8 +55,8 @@ const Post = () => {
         </View>
         <View style={styles.footerRow}>
           <Text style={styles.footerText}>
-            <Text style={styles.footerUsername}>mucahitsah</Text>
-            lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+            <Text style={styles.footerUsername}>{post.username}</Text>
+            {post.caption}
           </Text>
         </View>
       </View>

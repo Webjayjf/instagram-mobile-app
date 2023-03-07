@@ -1,4 +1,4 @@
-import { View, Text, FlatList, Image } from "react-native";
+import { Text, FlatList, Image, TouchableOpacity } from "react-native";
 import React from "react";
 import { LinearGradient } from "expo-linear-gradient";
 
@@ -52,7 +52,9 @@ const Stories = () => {
           colors={["#FBAA47", "#D91A46", "#A60F93"]}
           style={styles.item}
         >
-          <Image style={styles.image} source={{ uri: item.image }} />
+          <TouchableOpacity style={styles.imageContainer}>
+            <Image style={styles.image} source={{ uri: item.image }} />
+          </TouchableOpacity>
           <Text style={styles.username}>{item.username}</Text>
         </LinearGradient>
       )}
