@@ -1,19 +1,20 @@
 import { View, Text, TouchableOpacity, Image, ScrollView } from "react-native";
 import React from "react";
 import { Feather } from "@expo/vector-icons";
-import { createMaterialTopTabNavigator } from "@react-navigation/material-top-tabs";
+import { useDispatch, useSelector } from "react-redux";
 
 import styles from "./style";
 import ProfileTopTabNavigator from "../../Navigations/ProfileTopTabNavigator";
-
-const Tab = createMaterialTopTabNavigator();
+import FocusPost from "../../Components/Profile/FocusPost";
 
 const Profile = () => {
+  const { user, focusPost } = useSelector((state) => state.profile);
+
   return (
     <View style={styles.container}>
       <View style={styles.header}>
         <TouchableOpacity style={styles.headerLeft}>
-          <Text style={styles.headerText}>mucahitsah</Text>
+          <Text style={styles.headerText}>{user.username}</Text>
           <Feather name="chevron-down" size={24} color="black" />
         </TouchableOpacity>
         <TouchableOpacity style={styles.headerRight}>
@@ -27,35 +28,40 @@ const Profile = () => {
             <Image
               style={styles.userImage}
               source={{
-                uri: "https://images.unsplash.com/photo-1518791841217-8f162f1e1131?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60",
+                uri: user.userImage,
               }}
             />
           </View>
           <View style={styles.userStatistics}>
             <View style={styles.userStatistic}>
-              <Text style={styles.userStatisticValue}>100</Text>
+              <Text style={styles.userStatisticValue}>{user.posts.length}</Text>
               <Text style={styles.userStatisticText}>Posts</Text>
             </View>
             <View style={styles.userStatistic}>
-              <Text style={styles.userStatisticValue}>100</Text>
+              <Text style={styles.userStatisticValue}>
+                {user.followers.length}
+              </Text>
               <Text style={styles.userStatisticText}>Followers</Text>
             </View>
             <View style={styles.userStatistic}>
-              <Text style={styles.userStatisticValue}>100</Text>
+              <Text style={styles.userStatisticValue}>
+                {user.following.length}
+              </Text>
               <Text style={styles.userStatisticText}>Following</Text>
             </View>
           </View>
         </View>
         <View style={styles.nameAndBioCol}>
-          <Text style={styles.displayName}>Mücahit Şahin</Text>
-          <Text style={styles.bio}>Software Developer</Text>
+          <Text style={styles.displayName}>{user.displayName}</Text>
+          <Text style={styles.bio}>{user.bio}</Text>
         </View>
 
         <TouchableOpacity style={styles.editProfile}>
           <Text style={styles.editProfileText}>Edit Profile</Text>
         </TouchableOpacity>
       </View>
-      <ProfileTopTabNavigator />
+      <ProfileTopTabNavigator posts={user.posts} />
+      {focusPost && <FocusPost post={focusPost} />}
     </View>
   );
 };
