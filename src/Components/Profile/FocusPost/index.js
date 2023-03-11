@@ -6,6 +6,7 @@ import { SimpleLineIcons } from "@expo/vector-icons";
 import styles from "./style";
 import LikesIcon from "../../Icons/LikesIcon";
 import DirectIcon from "../../Icons/DirectIcon";
+import GalleryIcon from "../../Icons/GalleryIcon";
 
 const FocusPost = ({ post }) => {
   return (
@@ -26,9 +27,10 @@ const FocusPost = ({ post }) => {
           <Image
             style={styles.postCardImage}
             source={{
-              uri: post.image,
+              uri: post.images[0],
             }}
           />
+          {post.images.length > 1 && <GalleryIcon style={styles.icon} />}
         </View>
         <View style={styles.postCardFooter}>
           <TouchableOpacity style={styles.postCardFooterButton}>

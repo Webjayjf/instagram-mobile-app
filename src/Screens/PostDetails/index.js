@@ -4,10 +4,11 @@ import React from "react";
 import styles from "./style";
 import Post from "../../Components/Home/Post";
 
-const PostDetails = () => {
+const PostDetails = ({ route }) => {
+  const { post } = route.params;
   return (
     <View style={styles.container}>
-      <Post />
+      <Post post={post} />
     </View>
   );
 };

@@ -21,17 +21,17 @@ const Body = () => {
         renderItem={({ item }) => (
           <TouchableOpacity
             style={styles.item}
-            onPress={() => navigation.navigate("PostDetails")}
+            onPress={() => navigation.navigate("PostDetails", { post: item })}
             onLongPress={() => dispatch(setFocusPost(item))}
             onPressOut={() => dispatch(setFocusPost(null))}
           >
             <Image
               style={styles.image}
               source={{
-                uri: item.image,
+                uri: item.images[0],
               }}
             />
-            <GalleryIcon style={styles.icon} />
+            {item.images.length > 1 && <GalleryIcon style={styles.icon} />}
           </TouchableOpacity>
         )}
         keyExtractor={(item, index) => index}

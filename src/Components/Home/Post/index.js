@@ -25,7 +25,9 @@ const Post = ({ post }) => {
             <Text style={styles.username}>{post.username}</Text>
           </TouchableOpacity>
           <TouchableOpacity>
-            <Text style={styles.location}>Sivas</Text>
+            {post.location && (
+              <Text style={styles.location}>{post.location}</Text>
+            )}
           </TouchableOpacity>
         </View>
         <TouchableOpacity style={styles.options}>

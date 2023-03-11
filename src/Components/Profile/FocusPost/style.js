@@ -38,6 +38,13 @@ export default StyleSheet.create({
     width: width - (width / 18) * 2,
     height: width - (width / 18) * 2,
   },
+  icon: {
+    position: "absolute",
+    top: 5,
+    right: 5,
+    justifyContent: "center",
+    alignItems: "center",
+  },
   postCardFooter: {
     flexDirection: "row",
     alignItems: "center",
