@@ -60,7 +60,10 @@ const Profile = () => {
           <Text style={styles.editProfileText}>Edit Profile</Text>
         </TouchableOpacity>
       </View>
-      <ProfileTopTabNavigator posts={user.posts} />
+      <ProfileTopTabNavigator
+        posts={user.posts}
+        taggedPosts={user.taggedPosts}
+      />
       {focusPost && <FocusPost post={focusPost} />}
     </View>
   );

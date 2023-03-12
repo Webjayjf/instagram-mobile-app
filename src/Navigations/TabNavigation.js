@@ -5,7 +5,7 @@ import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { colors } from "../Theme/colors";
 import Home from "../Screens/Home";
 import Add from "../Screens/Add";
-import Profile from "../Screens/Profile";
+import ProfileStack from "../Navigations/ProfileStack";
 import Likes from "../Screens/Likes";
 import HomeIcon from "../Components/Icons/HomeIcon";
 import AddIcon from "../Components/Icons/AddIcon";
@@ -58,8 +58,8 @@ const TabNavigation = () => {
         }}
       />
       <Tab.Screen
-        name="Profile"
-        component={Profile}
+        name="ProfileStack"
+        component={ProfileStack}
         options={{
           tabBarIcon: ({ focused, color, size }) => (
             <AntDesign name="user" size={size} color={color} />

@@ -6,7 +6,7 @@ import TagsUserIcon from "../Components/Icons/TagsUserIcon";
 
 const Tab = createMaterialTopTabNavigator();
 
-const ProfileTopTabNavigator = ({ posts }) => {
+const ProfileTopTabNavigator = ({ posts, taggedPosts }) => {
   return (
     <Tab.Navigator
       screenOptions={{
@@ -27,7 +27,7 @@ const ProfileTopTabNavigator = ({ posts }) => {
       />
       <Tab.Screen
         name="Settings"
-        component={Posts}
+        children={() => <Posts posts={taggedPosts} />}
         options={{
           tabBarIcon: ({ color, size }) => (
             <TagsUserIcon color={color} size={size} />
