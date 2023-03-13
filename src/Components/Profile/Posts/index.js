@@ -16,10 +16,15 @@ const Posts = ({ posts }) => {
       <FlatList
         style={styles.flatList}
         data={posts}
-        renderItem={({ item }) => (
+        renderItem={({ item, index }) => (
           <TouchableOpacity
             style={styles.item}
-            onPress={() => navigation.navigate("PostDetails", { post: item })}
+            onPress={() =>
+              navigation.navigate("PostList", {
+                postIndex: index,
+                posts: posts,
+              })
+            }
             onLongPress={() => dispatch(setFocusPost(item))}
             onPressOut={() => dispatch(setFocusPost(null))}
           >

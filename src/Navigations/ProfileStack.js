@@ -5,6 +5,7 @@ import { useLayoutEffect } from "react";
 import Profile from "../Screens/Profile";
 import PostDetails from "../Screens/PostDetails";
 import { colors } from "../Theme/colors";
+import PostList from "../Screens/PostList";
 
 const Stack = createNativeStackNavigator();
 
@@ -31,8 +32,8 @@ const ExploreStack = ({ navigation, route }) => {
         options={{ headerShown: false }}
       />
       <Stack.Screen
-        name="PostDetails"
-        component={PostDetails}
+        name="PostList"
+        component={PostList}
         options={{ title: "Posts" }}
       />
     </Stack.Navigator>
