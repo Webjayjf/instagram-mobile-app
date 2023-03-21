@@ -3,7 +3,6 @@ import { AntDesign } from "@expo/vector-icons";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 
 import { colors } from "../Theme/colors";
-import Home from "../Screens/Home";
 import Add from "../Screens/Add";
 import ProfileStack from "../Navigations/ProfileStack";
 import Likes from "../Screens/Likes";
@@ -12,6 +11,7 @@ import AddIcon from "../Components/Icons/AddIcon";
 import ExploreIcon from "../Components/Icons/ExploreIcon";
 import LikesIcon from "../Components/Icons/LikesIcon";
 import ExploreStack from "./ExploreStack";
+import HomeStack from "./HomeStack";
 
 const Tab = createBottomTabNavigator();
 
@@ -26,8 +26,8 @@ const TabNavigation = () => {
       }}
     >
       <Tab.Screen
-        name="Home"
-        component={Home}
+        name="HomeStack"
+        component={HomeStack}
         options={{
           tabBarIcon: ({ focused, color, size }) => <HomeIcon color={color} />,
         }}

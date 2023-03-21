@@ -2,7 +2,7 @@ import { getFocusedRouteNameFromRoute } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { useLayoutEffect } from "react";
 
-import Explore from "../Screens/Explore";
+import Home from "../Screens/Home";
 import PostDetails from "../Screens/PostDetails";
 import PostList from "../Screens/PostList";
 import UserProfile from "../Screens/UserProfile";
@@ -10,7 +10,7 @@ import { colors } from "../Theme/colors";
 
 const Stack = createNativeStackNavigator();
 
-const ExploreStack = ({ navigation, route }) => {
+const HomeStack = ({ navigation, route }) => {
   useLayoutEffect(() => {
     if (getFocusedRouteNameFromRoute(route) == "PostDetails") {
       navigation.setOptions({
@@ -28,8 +28,8 @@ const ExploreStack = ({ navigation, route }) => {
   return (
     <Stack.Navigator>
       <Stack.Screen
-        name="Explore"
-        component={Explore}
+        name="Home"
+        component={Home}
         options={{ headerShown: false }}
       />
       <Stack.Screen
@@ -47,4 +47,4 @@ const ExploreStack = ({ navigation, route }) => {
   );
 };
 
-export default ExploreStack;
+export default HomeStack;

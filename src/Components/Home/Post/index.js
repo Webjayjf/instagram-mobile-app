@@ -8,20 +8,32 @@ import CommentIcon from "../../Icons/CommentIcon";
 import ShareIcon from "../../Icons/ShareIcon";
 import SaveIcon from "../../Icons/SaveIcon";
 import ImageSlider from "./ImageSlider";
+import { useNavigation } from "@react-navigation/native";
 
 const Post = ({ post }) => {
+  const navigation = useNavigation();
   const [liked, setLiked] = useState(false);
   return (
     <View style={styles.container}>
       <View style={styles.header}>
-        <Image
-          style={styles.userImage}
-          source={{
-            uri: post.userImage,
-          }}
-        />
+        <TouchableOpacity
+          onPress={() =>
+            navigation.navigate("UserProfile", { username: post.username })
+          }
+        >
+          <Image
+            style={styles.userImage}
+            source={{
+              uri: post.userImage,
+            }}
+          />
+        </TouchableOpacity>
         <View style={styles.usernameCol}>
-          <TouchableOpacity>
+          <TouchableOpacity
+            onPress={() =>
+              navigation.navigate("UserProfile", { username: post.username })
+            }
+          >
             <Text style={styles.username}>{post.username}</Text>
           </TouchableOpacity>
           <TouchableOpacity>
@@ -56,9 +68,18 @@ const Post = ({ post }) => {
           </TouchableOpacity>
         </View>
         <View style={styles.footerRow}>
-          <Text style={styles.footerText}>
-            <Text style={styles.footerUsername}>{post.username}</Text>
-            {post.caption}
+          <Text>
+            <Text
+              style={styles.footerUsername}
+              onPress={() =>
+                navigation.navigate("UserProfile", {
+                  username: post.username,
+                })
+              }
+            >
+              {post.username + " "}
+            </Text>
+            <Text style={styles.footerText}>{post.caption}</Text>
           </Text>
         </View>
       </View>
