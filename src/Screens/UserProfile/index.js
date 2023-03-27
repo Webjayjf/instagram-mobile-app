@@ -5,10 +5,13 @@ import { useSelector } from "react-redux";
 import styles from "./style";
 import ProfileTopTabNavigator from "../../Navigations/ProfileTopTabNavigator";
 import FocusPost from "../../Components/Profile/FocusPost";
+import profiles from "../../Redux/Data/profiles";
 
-const UserProfile = ({ navigation }) => {
-  const { user, focusPost } = useSelector((state) => state.profile);
-  navigation.setOptions({ title: user.username });
+const UserProfile = ({ route, navigation }) => {
+  const { username } = route.params;
+  const { focusPost } = useSelector((state) => state.profile);
+  navigation.setOptions({ title: username });
+  const [user] = React.useState(profiles.find((x) => x.username === username));
   return (
     <View style={styles.container}>
       <View style={styles.info}>
