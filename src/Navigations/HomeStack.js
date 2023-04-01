@@ -5,6 +5,7 @@ import { useLayoutEffect } from "react";
 import Home from "../Screens/Home";
 import PostDetails from "../Screens/PostDetails";
 import PostList from "../Screens/PostList";
+import Story from "../Screens/Story";
 import UserProfile from "../Screens/UserProfile";
 import { colors } from "../Theme/colors";
 
@@ -12,7 +13,9 @@ const Stack = createNativeStackNavigator();
 
 const HomeStack = ({ navigation, route }) => {
   useLayoutEffect(() => {
-    if (getFocusedRouteNameFromRoute(route) == "PostDetails") {
+    if (
+      ["PostDetails", "Story"].includes(getFocusedRouteNameFromRoute(route))
+    ) {
       navigation.setOptions({
         tabBarStyle: {
           display: "none",
@@ -42,6 +45,11 @@ const HomeStack = ({ navigation, route }) => {
         name="PostList"
         component={PostList}
         options={{ title: "Posts" }}
+      />
+      <Stack.Screen
+        name="Story"
+        component={Story}
+        options={{ headerShown: false }}
       />
     </Stack.Navigator>
   );

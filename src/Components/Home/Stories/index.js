@@ -4,8 +4,10 @@ import { LinearGradient } from "expo-linear-gradient";
 import { useSelector } from "react-redux";
 
 import styles from "./style";
+import { useNavigation } from "@react-navigation/native";
 
 const Stories = () => {
+  const navigation = useNavigation();
   const { stories } = useSelector((state) => state.home);
   return (
     <FlatList
@@ -16,7 +18,12 @@ const Stories = () => {
           colors={["#FBAA47", "#D91A46", "#A60F93"]}
           style={styles.item}
         >
-          <TouchableOpacity style={styles.imageContainer}>
+          <TouchableOpacity
+            style={styles.imageContainer}
+            onPress={() =>
+              navigation.navigate("Story", { story: item, stories: stories })
+            }
+          >
             <Image style={styles.image} source={{ uri: item.userImage }} />
           </TouchableOpacity>
           <Text style={styles.username}>{item.username}</Text>
