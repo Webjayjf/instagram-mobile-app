@@ -25,17 +25,17 @@ In this project, I tried to realise the instagram mobile application with react 
 
 <div style="display:flex;margin:auto;justify-content:center">
 
-<img src="assets/screenshoots/1.png" width="20%">
-<img src="assets/screenshoots/2.png" width="20%">
-<img src="assets/screenshoots/3.png" width="20%">
-<img src="assets/screenshoots/4.png" width="20%">
-<img src="assets/screenshoots/5.png" width="20%">
+<img src="assets/screenshoots/1.png" width="19%">
+<img src="assets/screenshoots/2.png" width="19%">
+<img src="assets/screenshoots/3.png" width="19%">
+<img src="assets/screenshoots/4.png" width="19%">
+<img src="assets/screenshoots/5.png" width="19%">
 </div>
 
 <div style="display:flex;margin:auto;justify-content:center">
 
-<img src="assets/screenshoots/6.png" width="25%">
-<img src="assets/screenshoots/7.png" width="25%">
-<img src="assets/screenshoots/8.png" width="25%">
-<img src="assets/screenshoots/9.png" width="25%">
+<img src="assets/screenshoots/6.png" width="24%">
+<img src="assets/screenshoots/7.png" width="24%">
+<img src="assets/screenshoots/8.png" width="24%">
+<img src="assets/screenshoots/9.png" width="24%">
 </div>
