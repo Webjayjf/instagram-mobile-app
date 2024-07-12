@@ -1,5 +1,5 @@
 import { View, Text, Image, TouchableOpacity, TextInput } from "react-native";
-import React from "react";
+import { useState, useEffect } from "react";
 import { AntDesign, Feather } from "@expo/vector-icons";
 
 import styles from "./style";
@@ -7,28 +7,77 @@ import DirectIcon from "../../Components/Icons/DirectIcon";
 
 const Story = ({ route, navigation }) => {
   const { story } = route.params;
-  const [time, setTime] = React.useState(0);
+  const [currentStoryIndex, setCurrentStoryIndex] = useState(0);
+  const [storyProgress, setStoryProgress] = useState([]);
+  const [storyTimer, setStoryTimer] = useState(null);
 
-  setInterval(() => {
-    setTime((time) => time + 5);
-  }, 10);
+  useEffect(() => {
+    startStoryTimer();
 
-  if (time > 100) {
+    return () => {
+      clearInterval(storyTimer);
+    };
+  }, [currentStoryIndex]);
+
+  useEffect(() => {
+    const currentStory = story.stories[currentStoryIndex];
+    const duration = currentStory.duration || 3; // Hikaye süresi varsayılan olarak 3 saniye
+
+    if (storyProgress[currentStoryIndex] >= 1) {
+      clearInterval(storyTimer);
+      moveToNextStory();
+    }
+  }, [storyProgress]);
+
+  const startStoryTimer = () => {
+    clearInterval(storyTimer);
+
+    const currentStory = story.stories[currentStoryIndex];
+    const duration = currentStory.duration || 3; // Hikaye süresi varsayılan olarak 3 saniye
+
+    const initialProgress = storyProgress[currentStoryIndex] || 0;
+
+    const timer = setInterval(() => {
+      setStoryProgress((prevProgress) => {
+        const updatedProgress = [...prevProgress];
+        updatedProgress[currentStoryIndex] =
+          prevProgress[currentStoryIndex] + 0.01;
+        return updatedProgress;
+      });
+    }, (duration * 1000) / 100);
+
+    setStoryTimer(timer);
+  };
+
+  const moveToNextStory = () => {
+    if (currentStoryIndex < story.stories.length - 1) {
+      setCurrentStoryIndex((prevIndex) => prevIndex + 1);
+    } else {
+      navigation.goBack();
+    }
+  };
+
+  const handleFinish = () => {
+    clearInterval(storyTimer);
     navigation.goBack();
-  }
+  };
+
+  const currentStory = story.stories[currentStoryIndex];
 
   return (
     <View style={styles.container}>
-      <Image style={styles.storyImage} source={{ uri: story.image }} />
+      <Image style={styles.storyImage} source={{ uri: currentStory }} />
       <View style={styles.header}>
         <View style={styles.topBar}>
-          <View
-            style={{
-              width: `${time}%`,
-              borderBottomColor: "white",
-              borderBottomWidth: 1,
-            }}
-          ></View>
+          {story.stories.map((story, index) => (
+            <View
+              style={{
+                width: `${storyProgress[index] || 0}%`,
+                borderBottomColor: "white",
+                borderBottomWidth: 1,
+              }}
+            ></View>
+          ))}
         </View>
         <View style={styles.headerRow}>
           <Image style={styles.userImage} source={{ uri: story.userImage }} />
