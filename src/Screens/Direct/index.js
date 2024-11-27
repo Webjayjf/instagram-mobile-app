@@ -1,6 +1,7 @@
 import { View, Text, FlatList, Image } from "react-native";
 import React, { useEffect } from "react";
 import { useNavigation } from "@react-navigation/native";
+import { useSelector } from "react-redux";
 
 import styles from "./style";
 import ExploreIcon from "../../Components/Icons/ExploreIcon";
@@ -9,6 +10,7 @@ import CameraIcon from "../../Components/Icons/CameraIcon";
 
 const Direct = () => {
   const navigation = useNavigation();
+  const { messages } = useSelector((state) => state.direct);
   useEffect(() => {
     navigation.setOptions({
       headerRight: () => (
@@ -29,22 +31,20 @@ const Direct = () => {
       {/* direct messages */}
       <FlatList
         style={styles.directMessages}
-        data={Array(10).fill(0)}
-        renderItem={() => (
+        data={messages}
+        renderItem={({ item, index }) => (
           <View style={styles.directMessage}>
             <View style={styles.directMessageImage}>
               <Image
                 source={{
-                  uri: `https://randomuser.me/api/portraits/men/${
-                    Math.floor(Math.random() * 30) + 1
-                  }.jpg`,
+                  uri: item.userimage,
                 }}
                 style={{ width: 50, height: 50 }}
               />
             </View>
             <View style={styles.directMessageText}>
-              <Text style={styles.directMessageUsername}>Username</Text>
-              <Text style={styles.directMessagePreview}>Message preview</Text>
+              <Text style={styles.directMessageUsername}>{item.username}</Text>
+              <Text style={styles.directMessagePreview}>{item.message}</Text>
             </View>
           </View>
         )}
