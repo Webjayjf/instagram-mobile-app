@@ -8,13 +8,16 @@ import PostList from "../Screens/PostList";
 import Story from "../Screens/Story";
 import UserProfile from "../Screens/UserProfile";
 import { colors } from "../Theme/colors";
+import Direct from "../Screens/Direct";
 
 const Stack = createNativeStackNavigator();
 
 const HomeStack = ({ navigation, route }) => {
   useLayoutEffect(() => {
     if (
-      ["PostDetails", "Story"].includes(getFocusedRouteNameFromRoute(route))
+      ["PostDetails", "Story", "Direct"].includes(
+        getFocusedRouteNameFromRoute(route)
+      )
     ) {
       navigation.setOptions({
         tabBarStyle: {
@@ -50,6 +53,14 @@ const HomeStack = ({ navigation, route }) => {
         name="Story"
         component={Story}
         options={{ headerShown: false }}
+      />
+      <Stack.Screen
+        name="Direct"
+        component={Direct}
+        options={{
+          animationTypeForReplace: "push", // ekran değiştirirken kayma animasyonu
+          animation: "slide_from_right", // ekran geçiş animasyonu }}
+        }}
       />
     </Stack.Navigator>
   );

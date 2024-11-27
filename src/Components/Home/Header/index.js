@@ -1,5 +1,6 @@
 import { View, Text, TouchableOpacity } from "react-native";
 import React from "react";
+import { useNavigation } from "@react-navigation/native";
 
 import styles from "./style";
 import CameraIcon from "../../Icons/CameraIcon";
@@ -8,6 +9,7 @@ import InstagramLogo from "../../Icons/InstagramLogo";
 import DirectIcon from "../../Icons/DirectIcon";
 
 const Header = () => {
+  const navigation = useNavigation();
   return (
     <View style={styles.container}>
       <TouchableOpacity>
@@ -20,7 +22,7 @@ const Header = () => {
         <TouchableOpacity style={styles.rightColItem}>
           <IGTVIcon />
         </TouchableOpacity>
-        <TouchableOpacity>
+        <TouchableOpacity onPress={() => navigation.navigate("Direct")}>
           <DirectIcon />
         </TouchableOpacity>
       </View>
