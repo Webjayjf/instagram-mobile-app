@@ -11,6 +11,10 @@ const styles = StyleSheet.create({
     alignItems: "center",
     margin: 10,
   },
+  logox: {
+    width: 150,
+    height: 92,
+  },
   input: {
     height: 40,
     borderColor: colors.borderColor,
