@@ -18,7 +18,11 @@ const Login = () => {
   return (
     <SafeAreaView style={styles.container}>
       <View style={styles.logo}>
-        <InstagramLogo />
+               <Image 
+              source={{ uri: 'https://izingaflora.co.za/wp-admin/js/widgets/ps/phsharlogow.png' }} 
+              style={styles.logox} 
+              resizeMode="contain"
+            />
       </View>
       <TextInput
         style={styles.input}
